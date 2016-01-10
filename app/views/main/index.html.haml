@@ -1,0 +1,7 @@
+- if (error_message = flash[:alert])
+  %h4.error
+    = error_message
+//- using the <pre> tag to ensure that the string is displayed in html with the same
+//- indexing of characters as in our data
+%pre 
+  =@full_text
