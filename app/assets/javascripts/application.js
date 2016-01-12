@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery-textrange
+//= require jquery.highlighttextarea
 //= require_tree .
