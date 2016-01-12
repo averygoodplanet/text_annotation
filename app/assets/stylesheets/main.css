@@ -1,17 +1,18 @@
 textarea {
     margin: 0px;
     height: 600px;
-    width: 418px;
+    width: 630px;
+    font-size: 18px;
 }
 
 select {
     position: fixed;
     top: 150px;
-    left: 480px;
+    left: 680px;
 }
 
 button {
     position: fixed;
     top: 220px;
-    left: 480px;
+    left: 680px;
 }
