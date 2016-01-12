@@ -46,6 +46,8 @@ $( document ).ready(function() {
   
   // on text selection with mouse, add a new annotation
   // or delete existing annotation
+  // this can error if there is a selection of a substring that spans both an existing
+  // annotation and non-annotated text at the same time (maybe a future feature fix)
   $('textarea').select(function() {
     /// get position etc of mouse-selected text
     selectionObject = $('textarea').textrange();
@@ -87,5 +89,9 @@ $( document ).ready(function() {
       annotations.push(newAnnotation);
       redrawAllHighlights();
     }
+  });
+
+  $('button').click( function(){
+    console.log(annotations);
   });
 });
