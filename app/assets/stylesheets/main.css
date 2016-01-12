@@ -3,3 +3,9 @@ textarea {
     height: 600px;
     width: 418px;
 }
+
+select {
+    position: fixed;
+    top: 150px;
+    left: 480px;
+}

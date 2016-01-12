@@ -1,5 +1,6 @@
 $( document ).ready(function() {
   // var annotations is set in index.html.haml
+  var highestCreatedDataId = annotations[annotations.length - 1]['id'];
 
   function rangesFromAnnotations() {
     var ranges = []
@@ -43,12 +44,48 @@ $( document ).ready(function() {
 
   redrawAllHighlights();
   
+  // on text selection with mouse, add a new annotation
+  // or delete existing annotation
   $('textarea').select(function() {
     /// get position etc of mouse-selected text
-    info = $('textarea').textrange();
-    console.log("text was selected by mouse:")
+    selectionObject = $('textarea').textrange();
     // e.g. {position: 1121, start: 1121, end: 1142, length: 21, text: ", a little timidly, '"}
-    console.log(info);
-    // debugger;
+
+    // we assume each annotation has a unique start index
+    // we don't support nested annotations
+    var selectionInAnnotations = $.grep(annotations, function(e){ return e.start == selectionObject['start']; });
+
+    if (selectionInAnnotations.length) {
+      // select an existing annotation to delete it
+      annotations = $.grep(annotations, function(e){ 
+           return e.id != selectionInAnnotations[0].id; 
+      });
+      redrawAllHighlights();
+    } else {
+      // select text without annotation to add an annotation
+      var category = '';
+      switch ($('select option:selected').val()) {
+        case '1':
+          category = 'LOCATION';
+          break
+        case '2':
+          category = 'ORGANIZATION';
+          break
+        case '3':
+          category = 'PERSON';
+          break
+      }
+
+      highestCreatedDataId += 1;
+      var newAnnotation = {
+        category: category,
+        id: highestCreatedDataId,
+        start: selectionObject['start'],
+        end: selectionObject['end'],
+        string_within_text: selectionObject['text']
+      }
+      annotations.push(newAnnotation);
+      redrawAllHighlights();
+    }
   });
 });

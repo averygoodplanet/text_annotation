@@ -3,6 +3,10 @@
     = error_message
 %textarea{readonly: true}
   = @raw_text
+%select
+  %option{value: 1}LOCATION
+  %option{value: 2}ORGANIZATION
+  %option{value: 3}PERSON
 
 :javascript
   var annotations = #{@annotations.to_json}
