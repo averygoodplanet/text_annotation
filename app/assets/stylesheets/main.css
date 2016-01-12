@@ -1,31 +1,5 @@
-/* Tooltip from http://webdesignerhut.com/pure-css-tooltips-with-html5-data-attribute/
-/* Some basic styling to notify users
-   about the tooltips*/
-.tooltip {
-  color: #900;
-  text-decoration: none;
-}
- 
-.tooltip:hover {
-  color: red;
-  position: relative;
-}
- 
-/* Tooltip on Top */
-.tooltip-top[data-tooltip]:hover:after {
-  content: attr(data-tooltip);
-  padding: 4px 8px;
-  position: absolute;
-  left: 0;
-  bottom: 100%;
-  white-space: nowrap;
-  z-index: 20px;
- 
-  background-color: #000;
-  color: #fff;
-}
-
-#fulltext {
-  /* allow room for tooltips on the top-row of text*/
-  margin-top: 28px;
+textarea {
+    margin: 0px;
+    height: 600px;
+    width: 418px;
 }

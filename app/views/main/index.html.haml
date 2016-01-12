@@ -1,5 +1,5 @@
 - if (error_message = flash[:alert])
   %h4.error
     = error_message
-#full_text
-  != @full_text_html
+%textarea{readonly: true}
+  = @raw_text
