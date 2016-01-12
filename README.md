@@ -14,3 +14,5 @@ Clicking Save will display JSON containing all current annotations in the browse
 
 An error will occur if a mouse selection is made that contains boths already-highlighted text, and non-highlighted text.
 This is a possible fix to consider in the future.
+
+As of 1/12/2016 this is running on Heroku http://cryptic-chamber-5262.herokuapp.com/
