@@ -12,6 +12,10 @@ class MainController < ApplicationController
       return
     end
 
+    @annotations = (file.annotations || []).map{|a| a.attributes}
+                                  .each{|hash| hash.delete('created_at')}
+                                  .each{|hash| hash.delete('updated_at')}
+
     @raw_text = file.full_text
   end
 end

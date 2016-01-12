@@ -3,3 +3,6 @@
     = error_message
 %textarea{readonly: true}
   = @raw_text
+
+:javascript
+  var annotations = #{@annotations.to_json}
