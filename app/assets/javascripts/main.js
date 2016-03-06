@@ -83,7 +83,7 @@ $( document ).ready(function() {
         category: category,
         id: highestCreatedDataId,
         start: selectionObject['start'],
-        end: selectionObject['end'],
+        end: selectionObject['end'] - 1,
         string_within_text: selectionObject['text']
       }
       annotations.push(newAnnotation);
