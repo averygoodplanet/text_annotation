@@ -51,6 +51,8 @@ $( document ).ready(function() {
   $('textarea').select(function() {
     /// get position etc of mouse-selected text
     selectionObject = $('textarea').textrange();
+    // so that it matches the way we count the end in selection in Annotations
+    selectionObject.trueEnd = selectionObject['end'] - 1;
     // e.g. {position: 1121, start: 1121, end: 1142, length: 21, text: ", a little timidly, '"}
 
     // we assume each annotation has a unique start index
@@ -83,7 +85,7 @@ $( document ).ready(function() {
         category: category,
         id: highestCreatedDataId,
         start: selectionObject['start'],
-        end: selectionObject['end'] - 1,
+        end: selectionObject['trueEnd'],
         string_within_text: selectionObject['text']
       }
       annotations.push(newAnnotation);
