@@ -56,17 +56,32 @@ $( document ).ready(function() {
     // e.g. {position: 1121, start: 1121, end: 1142, length: 21, text: ", a little timidly, '"}
 
     // we assume each annotation has a unique start index
-    // we don't support nested annotations
     var selectionInAnnotations = $.grep(annotations, function(e){ return e.start == selectionObject['start']; });
 
     if (selectionInAnnotations.length) {
+      // We don't support nested annotations.
+      // This prevents the error of selecting the start (per above conditionals) of an 
+      // existing annotation to somewhere other than the real end of the existing
+      // annotation.
+      if (selectionObject.trueEnd != selectionInAnnotations[0].end) {
+        alert('Nested annotations are not allowed.');
+        // exit the function
+        return;
+      }
+
       // select an existing annotation to delete it
       annotations = $.grep(annotations, function(e){ 
            return e.id != selectionInAnnotations[0].id; 
       });
       redrawAllHighlights();
     } else {
-      // select text without annotation to add an annotation
+      // select text without an existing annotation in order to add an annotation
+
+      // check that the selection doesn't start  inside an existing annotation
+      debugger;
+
+      // check that the selection doesn't end inside an existing annotation
+
       var category = '';
       switch ($('select option:selected').val()) {
         case '1':
